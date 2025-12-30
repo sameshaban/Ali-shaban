@@ -1,339 +1,862 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>دليل مأرب — شرح تعليمي</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل تعليمي - تطبيق دليل مأرب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
 
-  <style>
-    :root{
-      --bg:#070b14;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.04);
-      --border: rgba(255,255,255,.14);
-      --text:#f6f7ff;
-      --muted: rgba(255,255,255,.72);
-      --shadow: 0 14px 34px rgba(0,0,0,.45);
-      --r: 18px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1100px 520px at 75% -10%, rgba(121,97,255,.28), transparent 60%),
-        radial-gradient(900px 500px at 10% 0%, rgba(0,214,255,.20), transparent 55%),
-        linear-gradient(180deg, #070b14, #050814);
-    }
-    a{color:inherit}
-    .wrap{max-width:1020px; margin:0 auto; padding:22px}
+        :root {
+            --primary: #2c5aa0;
+            --primary-light: #4a7bc7;
+            --secondary: #d4af37;
+            --dark: #1a2c50;
+            --light: #f5f8ff;
+            --gray: #eef2f7;
+            --text: #333;
+            --shadow: rgba(44, 90, 160, 0.1);
+        }
 
-    .top{
-      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-      padding:10px 0 0;
-    }
-    .brand{display:flex; gap:12px; align-items:center}
-    .logo{
-      width:46px; height:46px; border-radius:16px;
-      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.86));
-      box-shadow: var(--shadow);
-      display:grid; place-items:center;
-      font-weight:900; color:#041223;
-    }
-    .brand h1{margin:0; font-size:18px}
-    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; border-radius:999px;
-      background: rgba(121,97,255,.16);
-      border:1px solid rgba(121,97,255,.28);
-      font-size:13px;
-      width: fit-content;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .hero{
-      margin-top:14px;
-      border-radius: var(--r);
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-inner{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap:16px;
-      padding:20px;
-    }
-    @media (max-width:860px){ .hero-inner{grid-template-columns:1fr} }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .hero h2{margin:10px 0 8px; font-size:32px; line-height:1.2}
-    .hero .sub{margin:0; color:var(--muted); line-height:1.9; font-size:15px}
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:12px 14px; border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.06);
-      text-decoration:none;
-      font-weight:800;
-      transition:.15s ease;
-      cursor:pointer;
-    }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
-    .btn.primary{
-      border:none;
-      color:#041223;
-      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.86));
-    }
-    .btn.whats{
-      border:1px solid rgba(37,211,102,.35);
-      background: rgba(37,211,102,.10);
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    .side{
-      border-radius: var(--r);
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.18);
-      padding:16px;
-    }
-    .side h3{margin:0 0 10px; font-size:16px}
-    .kv{display:grid; gap:8px; font-size:13px; color:var(--muted); line-height:1.6}
-    .kv b{color:var(--text)}
-    .note{
-      margin-top:10px;
-      border-radius: 14px;
-      border:1px dashed rgba(255,255,255,.20);
-      padding:10px 12px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.7;
-    }
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
 
-    .grid{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    @media (max-width:900px){ .grid{grid-template-columns:1fr 1fr} }
-    @media (max-width:560px){ .grid{grid-template-columns:1fr} }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
 
-    .card{
-      border-radius: var(--r);
-      border:1px solid var(--border);
-      background: var(--card2);
-      padding:14px;
-      box-shadow: 0 10px 26px rgba(0,0,0,.25);
-    }
-    .card h4{margin:0 0 6px; font-size:15px}
-    .card p{margin:0; color:var(--muted); line-height:1.85; font-size:13.5px}
+        .logo span {
+            color: var(--secondary);
+        }
 
-    .cats{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
-    }
-    .cat{
-      padding:10px 12px;
-      border-radius: 14px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      font-weight:700;
-      font-size:13px;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
 
-    .section{
-      margin-top:14px;
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:14px;
-    }
-    @media (max-width:860px){ .section{grid-template-columns:1fr} }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
 
-    ol{margin:0; padding:0 18px 0 0; color:var(--muted); line-height:1.95; font-size:14px}
-    li{margin:7px 0}
-    li b{color:var(--text)}
+        nav a:hover {
+            color: var(--secondary);
+        }
 
-    details{
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:12px;
-      background: rgba(255,255,255,.03);
-      margin:10px 0;
-    }
-    summary{cursor:pointer; font-weight:900}
-    details p{margin:8px 0 0; color:var(--muted); line-height:1.85; font-size:13.5px}
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            right: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
 
-    footer{
-      margin:18px 0 10px;
-      text-align:center;
-      color: rgba(255,255,255,.55);
-      font-size:12px;
-      line-height:1.7;
-    }
-  </style>
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(to left, rgba(255,255,255,0.9), rgba(255,255,255,0.7)), url('https://images.unsplash.com/photo-1586769852044-692eb51d3d6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: transform 0.5s;
+        }
+
+        .hero-image img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(44, 90, 160, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44, 90, 160, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            margin-right: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e6b413;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(44, 90, 160, 0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(44, 90, 160, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .feature-icon i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Steps Section */
+        .steps {
+            padding: 80px 0;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .step-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        /* Download Section */
+        .download {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .download h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .download p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: white;
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-width: 220px;
+            justify-content: center;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-btn i {
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text h2 {
+                font-size: 2.3rem;
+            }
+            
+            .step, .step:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: var(--dark);
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .download h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .features, .steps, .download {
+                padding: 50px 0;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .btn-secondary {
+                margin-right: 0;
+            }
+            
+            .download-btn {
+                min-width: 100%;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">
-        <div class="logo">م</div>
-        <div>
-          <h1>دليل مأرب</h1>
-          <p>صفحة شرح تعليمي + فتح التطبيق من الرابط</p>
-        </div>
-      </div>
-      <div class="pill" id="statusPill">✅ مناسب للإرسال عبر واتساب</div>
-    </div>
-
-    <div class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="pill">📍 تطبيق دليل الأماكن والخدمات في مأرب</div>
-          <h2>تعرّف على <span style="color:#a8f2ff">دليل مأرب</span> واستخدمه بسهولة</h2>
-          <p class="sub">
-            “دليل مأرب” يساعدك توصل للأماكن والخدمات بسرعة: مطاعم، صيدليات، مستشفيات، ورش، فنادق،
-            مكاتب خدمات وأرقام مهمة… كل شيء مرتب وواضح.
-          </p>
-
-          <div class="cta">
-            <a class="btn primary" id="openBtn" href="#">🚀 فتح التطبيق الآن</a>
-            <a class="btn" id="apkBtn" href="#" target="_blank">⬇️ تحميل التطبيق (APK)</a>
-            <a class="btn whats" id="waBtn" href="#" target="_blank">💬 تواصل واتساب</a>
-            <a class="btn" href="#learn">📘 طريقة الاستخدام</a>
-          </div>
-
-          <div class="card" style="margin-top:14px">
-            <h4>📌 الأقسام المتوفرة داخل التطبيق</h4>
-            <p>أمثلة للأقسام (يمكن تعديلها حسب تطبيقك):</p>
-            <div class="cats">
-              <div class="cat">🍽️ مطاعم</div>
-              <div class="cat">💊 صيدليات</div>
-              <div class="cat">🏥 مستشفيات</div>
-              <div class="cat">🔧 ورش وصيانة</div>
-              <div class="cat">🏨 فنادق</div>
-              <div class="cat">🧰 خدمات</div>
-              <div class="cat">☎️ أرقام مهمة</div>
-              <div class="cat">🛒 محلات</div>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <h1>دليل <span>مأرب</span></h1>
             </div>
-          </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#steps">كيفية الاستخدام</a></li>
+                    <li><a href="#download">تحميل التطبيق</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <div class="side">
-          <h3>معلومات الصفحة</h3>
-          <div class="kv">
-            <div>📦 <b>اسم الحزمة:</b> <span id="pkgTxt">—</span></div>
-            <div>🔗 <b>الرابط:</b> <span id="pageTxt">—</span></div>
-            <div>🧩 <b>بيانات من الرابط:</b> <span id="paramTxt">لا يوجد</span></div>
-          </div>
-
-          <div class="note">
-            💡 يمكنك إرسال رابط مع بيانات مثل:<br>
-            <b>?id=123&type=place</b><br>
-            (لاحقًا يمكن جعل التطبيق يفتح صفحة معيّنة حسب id)
-          </div>
-
-          <div class="note" style="margin-top:10px">
-            🔒 ملاحظة: بعض المتصفحات تمنع فتح التطبيق تلقائيًا. إذا لم يفتح، اضغط زر “فتح التطبيق الآن”.
-          </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h2>دليلك الشامل لمعالم وخدمات مدينة مأرب</h2>
+                <p>تطبيق "دليل مأرب" هو دليل متكامل يقدم لك معلومات شاملة عن معالم المدينة، المطاعم، الفنادق، الخدمات الحكومية، والكثير أكثر. اكتشف مدينة مأرب بكل سهولة ويسر.</p>
+                <a href="#download" class="btn btn-secondary">تحميل التطبيق الآن</a>
+                <a href="#steps" class="btn">كيفية الاستخدام</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="تطبيق دليل مأرب">
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="grid">
-      <div class="card">
-        <h4>🔍 بحث سريع</h4>
-        <p>ابحث بالاسم أو اختر القسم للوصول لأقرب خدمة داخل مأرب.</p>
-      </div>
-      <div class="card">
-        <h4>📞 تواصل سريع</h4>
-        <p>اتصل بالمكان أو تواصل معه إن كانت المعلومات متوفرة داخل التطبيق.</p>
-      </div>
-      <div class="card">
-        <h4>⭐ واجهة سهلة</h4>
-        <p>تنظيم واضح وتصنيفات تساعدك تحصل على ما تريد بسرعة.</p>
-      </div>
-    </div>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>مميزات التطبيق</h2>
+                <p>تطبيق "دليل مأرب" مصمم ليكون مرافقك الأمثل في اكتشاف المدينة واستكشاف خدماتها بكل سهولة</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>خرائط تفاعلية</h3>
+                    <p>خرائط مفصلة لجميع أحياء مدينة مأرب مع تحديد مواقع الخدمات والمعالم المهمة بدقة عالية</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>دليل المطاعم</h3>
+                    <p>قائمة شاملة بمطاعم المدينة مع تقييمات الزوار، قوائم الطعام، وأرقام الاتصال</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>الفنادق والإقامة</h3>
+                    <p>دليل شامل لفنادق وشقق الإيجار في المدينة مع معلومات الأسعار والمرافق المتاحة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3>الخدمات الحكومية</h3>
+                    <p>معلومات عن مواقع وأوقات عمل الدوائر الحكومية والخدمات العامة في المدينة</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>الخدمات الصحية</h3>
+                    <p>دليل بالمستشفيات، العيادات، والصيدليات مع أوقات العمل وأرقام الطوارئ</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>دعم متعدد اللغات</h3>
+                    <p>واجهة تطبيق متوفرة بعدة لغات لتسهيل الاستخدام للزوار من مختلف الجنسيات</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="section" id="learn">
-      <div class="card">
-        <h4>📘 شرح تعليمي لطريقة الاستخدام</h4>
-        <ol>
-          <li>افتح التطبيق ثم اختر <b>القسم</b> (مطاعم/صيدليات/ورش/…)</li>
-          <li>استخدم <b>البحث</b> للوصول للمكان المطلوب بسرعة.</li>
-          <li>افتح بطاقة المكان لمشاهدة <b>التفاصيل</b> (العنوان، وصف، هاتف إن وجد).</li>
-          <li>اضغط <b>اتصال</b> أو <b>مشاركة</b> لمساعدة الآخرين.</li>
-          <li>شارك رابط الصفحة في واتساب لفتح التطبيق بسهولة.</li>
-        </ol>
-      </div>
+    <!-- Steps Section -->
+    <section class="steps" id="steps">
+        <div class="container">
+            <div class="section-title">
+                <h2>كيفية استخدام التطبيق</h2>
+                <p>اتبع هذه الخطوات البسيطة لتحصل على أقصى استفادة من تطبيق دليل مأرب</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-image">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="تحميل التطبيق">
+                    </div>
+                    <div class="step-content">
+                        <h3>قم بتحميل التطبيق</h3>
+                        <p>قم بتحميل تطبيق "دليل مأرب" من متجر تطبيقات الهاتف الخاص بك سواء كان أندرويد أو آيفون. التطبيق مجاني بالكامل ولا يتطلب أي رسوم للتحميل.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="إنشاء حساب">
+                    </div>
+                    <div class="step-content">
+                        <h3>أنشئ حسابك الشخصي</h3>
+                        <p>سجل في التطبيق باستخدام بريدك الإلكتروني أو حساب وسائل التواصل الاجتماعي لتحصل على تجربة مخصصة وتتمكن من حفظ المواقع المفضلة لديك.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-image">
+                        <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="استكشاف الخدمات">
+                    </div>
+                    <div class="step-content">
+                        <h3>استكشف خدمات المدينة</h3>
+                        <p>استخدم التصنيفات المختلفة لاكتشاف الخدمات التي تبحث عنها. يمكنك البحث عن مطاعم، فنادق، خدمات حكومية، مراكز طبية، ومعالم سياحية.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="التقييم والمشاركة">
+                    </div>
+                    <div class="step-content">
+                        <h3>شارك تجربتك وقيم الخدمات</h3>
+                        <p>ساعد الآخرين بمشاركة تجربتك وتقييم الخدمات التي استخدمتها. يمكنك أيضًا إضافة صور وتوصيات لتحسين تجربة المستخدمين الآخرين.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="card">
-        <h4>❓ أسئلة شائعة</h4>
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <h2>حمل التطبيق الآن واستمتع بتجربة مدينة مأرب</h2>
+            <p>انضم إلى آلاف المستخدمين الراضين عن تطبيق دليل مأرب. حمله الآن مجاناً واستفد من جميع الميزات المتاحة</p>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-btn">
+                    <i class="fab fa-google-play"></i>
+                    <div>
+                        <div>حمله من</div>
+                        <div>Google Play</div>
+                    </div>
+                </a>
+                
+                <a href="#" class="download-btn">
+                    <i class="fab fa-apple"></i>
+                    <div>
+                        <div>حمله من</div>
+                        <div>App Store</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <details>
-          <summary>لماذا لا يفتح التطبيق تلقائيًا أحيانًا؟</summary>
-          <p>بعض المتصفحات تمنع الفتح التلقائي للتطبيق لأسباب أمنية. لذلك زر “فتح التطبيق الآن” هو الحل.</p>
-        </details>
-
-        <details>
-          <summary>هل أحتاج متجر Play؟</summary>
-          <p>لا. إذا وفّرت رابط APK مباشر، زر التحميل سيسمح بتنزيل التطبيق.</p>
-        </details>
-
-        <details>
-          <summary>هل يمكن فتح صفحة معيّنة داخل التطبيق من الرابط؟</summary>
-          <p>نعم، عبر قراءة <b>id</b> و <b>type</b> داخل التطبيق. إذا تريد ذلك أعطيك كود Java/Sketchware جاهز.</p>
-        </details>
-      </div>
-    </div>
-
+    <!-- Footer -->
     <footer>
-      دليل مأرب — صفحة تعريف وتعليم + فتح التطبيق عبر رابط (GitHub Pages)
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h3>دليل مأرب</h3>
+                    </div>
+                    <p>تطبيق دليل مأرب هو المفتاح لاكتشاف مدينة مأرب بكل ما تحتويه من خدمات ومعالم. نسعى لجعل تجربتك في المدينة سهلة وممتعة.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#steps">كيفية الاستخدام</a></li>
+                        <li><a href="#download">تحميل التطبيق</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>اتصل بنا</h4>
+                    <p><i class="fas fa-envelope"></i> info@marebguide.com</p>
+                    <p><i class="fas fa-phone"></i> +967 1 234 5678</p>
+                    <p><i class="fas fa-map-marker-alt"></i> مدينة مأرب، اليمن</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 تطبيق دليل مأرب. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
     </footer>
-  </div>
 
-  <script>
-    // ====== عدّل هذه القيم فقط ======
-    const PACKAGE_NAME = "com.my.newproject40";
-    const APK_URL = ""; // ضع رابط APK مباشر هنا إن وجد، وإلا اتركه فارغًا
-    const WHATSAPP_NUMBER = "9677XXXXXXXX"; // رقمك بصيغة دولية بدون + (مثال: 9677....)
-    // =================================
-
-    // إظهار معلومات
-    document.getElementById("pkgTxt").textContent = PACKAGE_NAME;
-    document.getElementById("pageTxt").textContent = window.location.href;
-
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id") || "";
-    const type = params.get("type") || "";
-
-    if (id || type) {
-      document.getElementById("paramTxt").textContent =
-        (id ? ("id=" + id) : "") + (id && type ? " | " : "") + (type ? ("type=" + type) : "");
-    }
-
-    // زر واتساب
-    const waMsg = encodeURIComponent("السلام عليكم، أريد الاستفسار عن تطبيق دليل مأرب.");
-    document.getElementById("waBtn").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + waMsg;
-
-    // زر APK (إخفاء إن لم يوجد)
-    const apkBtn = document.getElementById("apkBtn");
-    if (APK_URL && APK_URL.trim().length > 0) {
-      apkBtn.href = APK_URL;
-    } else {
-      apkBtn.style.display = "none";
-    }
-
-    // رابط intent لفتح التطبيق المثبّت
-    const deepPath = "open" + (id ? ("?id=" + encodeURIComponent(id) + (type ? ("&type=" + encodeURIComponent(type)) : "")) : "");
-    const INTENT_URL = "intent://" + deepPath + "#Intent;scheme=dalil;package=" + PACKAGE_NAME + ";end;";
-
-    // زر فتح التطبيق
-    document.getElementById("openBtn").href = INTENT_URL;
-
-    // محاولة فتح تلقائي (قد تُمنع)
-    try { window.location.href = INTENT_URL; } catch (e) {}
-  </script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation to step cards on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe step elements
+        document.querySelectorAll('.step').forEach(step => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(20px)';
+            step.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(step);
+        });
+        
+        // Observe feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+        
+        // Trigger animations after page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.feature-card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+                
+                setTimeout(() => {
+                    document.querySelectorAll('.step').forEach((step, index) => {
+                        setTimeout(() => {
+                            step.style.opacity = '1';
+                            step.style.transform = 'translateY(0)';
+                        }, index * 150);
+                    });
+                }, 500);
+            }, 300);
+        });
+    </script>
 </body>
 </html>
