@@ -3,203 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>دليل مأرب — صفحة تعليمية</title>
+  <title>دليل مأرب — شرح تعليمي</title>
 
   <style>
     :root{
-      --bg:#0b1220;
-      --card:#0f1a33;
-      --text:#f5f7ff;
-      --muted:#b9c2ff;
-      --border:rgba(255,255,255,.12);
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius:18px;
+      --bg:#070b14;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.14);
+      --text:#f6f7ff;
+      --muted: rgba(255,255,255,.72);
+      --shadow: 0 14px 34px rgba(0,0,0,.45);
+      --r: 18px;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 70% -10%, rgba(121, 97, 255, .25), transparent 60%),
-                  radial-gradient(900px 500px at 10% 0%, rgba(0, 214, 255, .18), transparent 55%),
-                  var(--bg);
       color:var(--text);
+      background:
+        radial-gradient(1100px 520px at 75% -10%, rgba(121,97,255,.28), transparent 60%),
+        radial-gradient(900px 500px at 10% 0%, rgba(0,214,255,.20), transparent 55%),
+        linear-gradient(180deg, #070b14, #050814);
     }
-
     a{color:inherit}
-    .wrap{max-width:980px; margin:0 auto; padding:22px}
+    .wrap{max-width:1020px; margin:0 auto; padding:22px}
+
     .top{
-      display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap;
-      padding:14px 0 6px;
+      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      padding:10px 0 0;
     }
-    .brand{
-      display:flex; gap:12px; align-items:center;
-    }
+    .brand{display:flex; gap:12px; align-items:center}
     .logo{
-      width:44px; height:44px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.85));
+      width:46px; height:46px; border-radius:16px;
+      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.86));
       box-shadow: var(--shadow);
       display:grid; place-items:center;
-      font-weight:800;
+      font-weight:900; color:#041223;
     }
     .brand h1{margin:0; font-size:18px}
-    .brand p{margin:2px 0 0; color:var(--muted); font-size:12px}
+    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted)}
 
-    .hero{
-      margin-top:10px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-inner{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
-      padding:22px;
-    }
-    @media (max-width:820px){
-      .hero-inner{grid-template-columns: 1fr}
-    }
-
-    .badge{
+    .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(121,97,255,.18);
-      border:1px solid rgba(121,97,255,.30);
-      color: var(--text);
+      padding:8px 12px; border-radius:999px;
+      background: rgba(121,97,255,.16);
+      border:1px solid rgba(121,97,255,.28);
       font-size:13px;
       width: fit-content;
     }
 
-    .hero h2{
-      margin:10px 0 8px;
-      font-size:30px;
-      line-height:1.25;
+    .hero{
+      margin-top:14px;
+      border-radius: var(--r);
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
-    .hero .sub{
-      margin:0;
-      color: var(--muted);
-      font-size:15px;
-      line-height:1.85;
+    .hero-inner{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:16px;
+      padding:20px;
     }
+    @media (max-width:860px){ .hero-inner{grid-template-columns:1fr} }
 
-    .cta{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top:16px;
-    }
+    .hero h2{margin:10px 0 8px; font-size:32px; line-height:1.2}
+    .hero .sub{margin:0; color:var(--muted); line-height:1.9; font-size:15px}
+
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:12px 14px; border-radius:14px;
       border:1px solid var(--border);
       background: rgba(255,255,255,.06);
-      padding:12px 14px;
-      border-radius:14px;
       text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      cursor:pointer;
+      font-weight:800;
       transition:.15s ease;
-      font-weight:600;
+      cursor:pointer;
     }
     .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
     .btn.primary{
-      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.85));
-      border: none;
-      color:#06101f;
+      border:none;
+      color:#041223;
+      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.86));
     }
-    .btn.primary:hover{filter:brightness(1.05)}
+    .btn.whats{
+      border:1px solid rgba(37,211,102,.35);
+      background: rgba(37,211,102,.10);
+    }
 
-    .panel{
-      background: rgba(0,0,0,.15);
+    .side{
+      border-radius: var(--r);
       border:1px solid var(--border);
-      border-radius:var(--radius);
+      background: rgba(0,0,0,.18);
       padding:16px;
     }
-    .panel h3{margin:0 0 10px; font-size:16px}
-    .kv{
-      display:grid; gap:8px;
-      color: var(--muted);
-      font-size:13px;
-      line-height:1.6;
-    }
+    .side h3{margin:0 0 10px; font-size:16px}
+    .kv{display:grid; gap:8px; font-size:13px; color:var(--muted); line-height:1.6}
     .kv b{color:var(--text)}
-    .hint{
+    .note{
       margin-top:10px;
+      border-radius: 14px;
+      border:1px dashed rgba(255,255,255,.20);
       padding:10px 12px;
-      border-radius:14px;
-      border:1px dashed rgba(255,255,255,.18);
       color:var(--muted);
       font-size:13px;
       line-height:1.7;
     }
 
     .grid{
+      margin-top:14px;
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:14px;
-      margin-top:14px;
     }
     @media (max-width:900px){ .grid{grid-template-columns:1fr 1fr} }
     @media (max-width:560px){ .grid{grid-template-columns:1fr} }
 
     .card{
-      background: rgba(255,255,255,.04);
+      border-radius: var(--r);
       border:1px solid var(--border);
-      border-radius:var(--radius);
+      background: var(--card2);
       padding:14px;
-      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
     }
     .card h4{margin:0 0 6px; font-size:15px}
-    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.8}
+    .card p{margin:0; color:var(--muted); line-height:1.85; font-size:13.5px}
+
+    .cats{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
+    }
+    .cat{
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      font-weight:700;
+      font-size:13px;
+    }
 
     .section{
-      margin-top:16px;
+      margin-top:14px;
       display:grid;
       grid-template-columns: 1.1fr .9fr;
       gap:14px;
     }
-    @media (max-width:820px){ .section{grid-template-columns:1fr} }
+    @media (max-width:860px){ .section{grid-template-columns:1fr} }
 
-    .steps ol{
-      margin:0; padding:0 18px 0 0;
-      color: var(--muted);
-      line-height:1.9;
-      font-size:14px;
-    }
-    .steps li{margin:8px 0}
-    .steps b{color:var(--text)}
-    .faq details{
+    ol{margin:0; padding:0 18px 0 0; color:var(--muted); line-height:1.95; font-size:14px}
+    li{margin:7px 0}
+    li b{color:var(--text)}
+
+    details{
       border:1px solid var(--border);
       border-radius:14px;
       padding:12px;
       background: rgba(255,255,255,.03);
       margin:10px 0;
     }
-    .faq summary{
-      cursor:pointer;
-      font-weight:700;
-      outline:none;
-    }
-    .faq p{
-      margin:8px 0 0;
-      color:var(--muted);
-      line-height:1.85;
-      font-size:13.5px;
-    }
+    summary{cursor:pointer; font-weight:900}
+    details p{margin:8px 0 0; color:var(--muted); line-height:1.85; font-size:13.5px}
 
     footer{
       margin:18px 0 10px;
+      text-align:center;
       color: rgba(255,255,255,.55);
       font-size:12px;
-      text-align:center;
-    }
-
-    .small{
-      font-size:12px;
-      color: rgba(255,255,255,.65);
-      margin-top:8px;
       line-height:1.7;
     }
   </style>
@@ -207,54 +176,66 @@
 
 <body>
   <div class="wrap">
-
     <div class="top">
       <div class="brand">
         <div class="logo">م</div>
         <div>
           <h1>دليل مأرب</h1>
-          <p>صفحة تعليمية لشرح التطبيق وفتح التطبيق من الرابط</p>
+          <p>صفحة شرح تعليمي + فتح التطبيق من الرابط</p>
         </div>
       </div>
-
-      <div class="badge" id="statusBadge">جاهز للاستخدام عبر واتساب</div>
+      <div class="pill" id="statusPill">✅ مناسب للإرسال عبر واتساب</div>
     </div>
 
     <div class="hero">
       <div class="hero-inner">
         <div>
-          <div class="badge">📍 دليل الأماكن والخدمات في مأرب</div>
-          <h2>تعلّم استخدام تطبيق <span style="color:#9fe7ff">دليل مأرب</span> خطوة بخطوة</h2>
+          <div class="pill">📍 تطبيق دليل الأماكن والخدمات في مأرب</div>
+          <h2>تعرّف على <span style="color:#a8f2ff">دليل مأرب</span> واستخدمه بسهولة</h2>
           <p class="sub">
-            التطبيق يساعدك في الوصول إلى <b>الأماكن</b> والخدمات بسهولة: مطاعم، صيدليات، ورش، فنادق، مكاتب خدمات،
-            وأرقام مهمة — مع معلومات وتواصل سريع.
+            “دليل مأرب” يساعدك توصل للأماكن والخدمات بسرعة: مطاعم، صيدليات، مستشفيات، ورش، فنادق،
+            مكاتب خدمات وأرقام مهمة… كل شيء مرتب وواضح.
           </p>
 
           <div class="cta">
             <a class="btn primary" id="openBtn" href="#">🚀 فتح التطبيق الآن</a>
             <a class="btn" id="apkBtn" href="#" target="_blank">⬇️ تحميل التطبيق (APK)</a>
-            <a class="btn" href="#learn">📘 شرح الاستخدام</a>
+            <a class="btn whats" id="waBtn" href="#" target="_blank">💬 تواصل واتساب</a>
+            <a class="btn" href="#learn">📘 طريقة الاستخدام</a>
           </div>
 
-          <div class="small">
-            💡 إذا لم يُفتح التطبيق تلقائيًا، اضغط زر <b>فتح التطبيق الآن</b>.
-            بعض المتصفحات تمنع الفتح التلقائي لأسباب أمنية.
+          <div class="card" style="margin-top:14px">
+            <h4>📌 الأقسام المتوفرة داخل التطبيق</h4>
+            <p>أمثلة للأقسام (يمكن تعديلها حسب تطبيقك):</p>
+            <div class="cats">
+              <div class="cat">🍽️ مطاعم</div>
+              <div class="cat">💊 صيدليات</div>
+              <div class="cat">🏥 مستشفيات</div>
+              <div class="cat">🔧 ورش وصيانة</div>
+              <div class="cat">🏨 فنادق</div>
+              <div class="cat">🧰 خدمات</div>
+              <div class="cat">☎️ أرقام مهمة</div>
+              <div class="cat">🛒 محلات</div>
+            </div>
           </div>
         </div>
 
-        <div class="panel">
-          <h3>معلومات سريعة</h3>
-          <div class="kv" id="infoBox">
-            <div>✅ <b>الحالة:</b> صفحة تعمل عبر HTTPS ومناسبة لواتساب</div>
+        <div class="side">
+          <h3>معلومات الصفحة</h3>
+          <div class="kv">
             <div>📦 <b>اسم الحزمة:</b> <span id="pkgTxt">—</span></div>
-            <div>🔗 <b>رابط الصفحة:</b> <span id="pageTxt">—</span></div>
+            <div>🔗 <b>الرابط:</b> <span id="pageTxt">—</span></div>
             <div>🧩 <b>بيانات من الرابط:</b> <span id="paramTxt">لا يوجد</span></div>
           </div>
 
-          <div class="hint">
-            مثال رابط مع بيانات:<br>
+          <div class="note">
+            💡 يمكنك إرسال رابط مع بيانات مثل:<br>
             <b>?id=123&type=place</b><br>
-            (يفيد لاحقًا لو أردت فتح صفحة معيّنة داخل التطبيق)
+            (لاحقًا يمكن جعل التطبيق يفتح صفحة معيّنة حسب id)
+          </div>
+
+          <div class="note" style="margin-top:10px">
+            🔒 ملاحظة: بعض المتصفحات تمنع فتح التطبيق تلقائيًا. إذا لم يفتح، اضغط زر “فتح التطبيق الآن”.
           </div>
         </div>
       </div>
@@ -263,84 +244,78 @@
     <div class="grid">
       <div class="card">
         <h4>🔍 بحث سريع</h4>
-        <p>ابحث بالاسم أو النوع للوصول لأقرب خدمة أو مكان داخل مأرب.</p>
+        <p>ابحث بالاسم أو اختر القسم للوصول لأقرب خدمة داخل مأرب.</p>
       </div>
       <div class="card">
-        <h4>📞 تواصل بضغطة</h4>
-        <p>اتصل أو تواصل مباشرة إذا كانت معلومات المكان متاحة في التطبيق.</p>
+        <h4>📞 تواصل سريع</h4>
+        <p>اتصل بالمكان أو تواصل معه إن كانت المعلومات متوفرة داخل التطبيق.</p>
       </div>
       <div class="card">
-        <h4>🗺️ معلومات منظّمة</h4>
-        <p>تصنيفات واضحة تساعدك تجد ما تريد بسرعة بدون تعب.</p>
+        <h4>⭐ واجهة سهلة</h4>
+        <p>تنظيم واضح وتصنيفات تساعدك تحصل على ما تريد بسرعة.</p>
       </div>
     </div>
 
     <div class="section" id="learn">
-      <div class="card steps">
-        <h4>📘 شرح الاستخدام (تعليمي)</h4>
+      <div class="card">
+        <h4>📘 شرح تعليمي لطريقة الاستخدام</h4>
         <ol>
-          <li>افتح التطبيق ثم اختر <b>القسم</b> (مطاعم/صيدليات/ورش/فنادق…)</li>
-          <li>استخدم <b>البحث</b> للعثور على المكان المطلوب.</li>
-          <li>افتح بطاقة المكان لمشاهدة <b>التفاصيل</b> (العنوان، الوصف، الهاتف إن وجد).</li>
-          <li>إذا وجدت زر تواصل، اضغطه للاتصال أو المراسلة.</li>
-          <li>شارك التطبيق مع أصدقائك عبر واتساب لمساعدة الآخرين.</li>
+          <li>افتح التطبيق ثم اختر <b>القسم</b> (مطاعم/صيدليات/ورش/…)</li>
+          <li>استخدم <b>البحث</b> للوصول للمكان المطلوب بسرعة.</li>
+          <li>افتح بطاقة المكان لمشاهدة <b>التفاصيل</b> (العنوان، وصف، هاتف إن وجد).</li>
+          <li>اضغط <b>اتصال</b> أو <b>مشاركة</b> لمساعدة الآخرين.</li>
+          <li>شارك رابط الصفحة في واتساب لفتح التطبيق بسهولة.</li>
         </ol>
       </div>
 
-      <div class="card faq">
+      <div class="card">
         <h4>❓ أسئلة شائعة</h4>
 
         <details>
           <summary>لماذا لا يفتح التطبيق تلقائيًا أحيانًا؟</summary>
-          <p>بعض المتصفحات تمنع الفتح التلقائي للتطبيق لأسباب أمنية، لذلك وضعنا زر “فتح التطبيق الآن”.</p>
+          <p>بعض المتصفحات تمنع الفتح التلقائي للتطبيق لأسباب أمنية. لذلك زر “فتح التطبيق الآن” هو الحل.</p>
         </details>
 
         <details>
-          <summary>هل يحتاج التطبيق إلى متجر Google Play؟</summary>
-          <p>لا. يمكن تحميل التطبيق عبر ملف APK من زر التحميل إذا وفّرت رابطًا مباشرًا للملف.</p>
+          <summary>هل أحتاج متجر Play؟</summary>
+          <p>لا. إذا وفّرت رابط APK مباشر، زر التحميل سيسمح بتنزيل التطبيق.</p>
         </details>
 
         <details>
           <summary>هل يمكن فتح صفحة معيّنة داخل التطبيق من الرابط؟</summary>
-          <p>نعم، لكن يحتاج أن تضيف داخل التطبيق كود لاستقبال <b>id</b> و <b>type</b> من الرابط. إذا أردت ذلك قلّي وسأعطيك كود Sketchware/Java.</p>
+          <p>نعم، عبر قراءة <b>id</b> و <b>type</b> داخل التطبيق. إذا تريد ذلك أعطيك كود Java/Sketchware جاهز.</p>
         </details>
       </div>
     </div>
 
     <footer>
-      © دليل مأرب — صفحة تعريف وتعليم — GitHub Pages
+      دليل مأرب — صفحة تعريف وتعليم + فتح التطبيق عبر رابط (GitHub Pages)
     </footer>
   </div>
 
   <script>
-    // ====== عدّل هنا فقط ======
+    // ====== عدّل هذه القيم فقط ======
     const PACKAGE_NAME = "com.my.newproject40";
+    const APK_URL = ""; // ضع رابط APK مباشر هنا إن وجد، وإلا اتركه فارغًا
+    const WHATSAPP_NUMBER = "9677XXXXXXXX"; // رقمك بصيغة دولية بدون + (مثال: 9677....)
+    // =================================
 
-    // ضع رابط APK مباشر (اختياري). إذا لا يوجد، اتركه فارغًا وسيُخفى زر التحميل.
-    const APK_URL = ""; // مثال: "https://example.com/dalil-marib.apk"
-    // ==========================
+    // إظهار معلومات
+    document.getElementById("pkgTxt").textContent = PACKAGE_NAME;
+    document.getElementById("pageTxt").textContent = window.location.href;
 
-    // باراميترات اختيارية من الرابط
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id") || "";
     const type = params.get("type") || "";
-
-    // تحديث معلومات اللوحة
-    document.getElementById("pkgTxt").textContent = PACKAGE_NAME;
-    document.getElementById("pageTxt").textContent = window.location.href;
 
     if (id || type) {
       document.getElementById("paramTxt").textContent =
         (id ? ("id=" + id) : "") + (id && type ? " | " : "") + (type ? ("type=" + type) : "");
     }
 
-    // Intent لفتح التطبيق المثبّت بالباكج نيم
-    const deepPath = "open" + (id ? ("?id=" + encodeURIComponent(id) + (type ? ("&type=" + encodeURIComponent(type)) : "")) : "");
-    const INTENT_URL = "intent://" + deepPath + "#Intent;scheme=dalil;package=" + PACKAGE_NAME + ";end;";
-
-    // زر فتح التطبيق
-    const openBtn = document.getElementById("openBtn");
-    openBtn.href = INTENT_URL;
+    // زر واتساب
+    const waMsg = encodeURIComponent("السلام عليكم، أريد الاستفسار عن تطبيق دليل مأرب.");
+    document.getElementById("waBtn").href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + waMsg;
 
     // زر APK (إخفاء إن لم يوجد)
     const apkBtn = document.getElementById("apkBtn");
@@ -350,7 +325,14 @@
       apkBtn.style.display = "none";
     }
 
-    // محاولة فتح تلقائية (قد تُمنع على بعض الأجهزة)
+    // رابط intent لفتح التطبيق المثبّت
+    const deepPath = "open" + (id ? ("?id=" + encodeURIComponent(id) + (type ? ("&type=" + encodeURIComponent(type)) : "")) : "");
+    const INTENT_URL = "intent://" + deepPath + "#Intent;scheme=dalil;package=" + PACKAGE_NAME + ";end;";
+
+    // زر فتح التطبيق
+    document.getElementById("openBtn").href = INTENT_URL;
+
+    // محاولة فتح تلقائي (قد تُمنع)
     try { window.location.href = INTENT_URL; } catch (e) {}
   </script>
 </body>
