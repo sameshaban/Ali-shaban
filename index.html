@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
-  <title>مرحباً!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>فتح التطبيق</title>
+  <style>
+    body { font-family: Arial, sans-serif; direction: rtl; margin: 24px; }
+    .box { max-width: 520px; margin: 0 auto; padding: 18px; border: 1px solid #ddd; border-radius: 12px; }
+    h2 { margin: 0 0 12px; }
+    p { line-height: 1.7; }
+    a.btn { display:inline-block; margin:8px 6px 0 0; padding:10px 14px; border-radius:10px; text-decoration:none; border:1px solid #000; }
+  </style>
 </head>
 <body>
-  <h1>أول موقع لي على GitHub Pages</h1>
-  <p>تم إنشاؤه مجاناً!</p>
+  <div class="box">
+    <h2>فتح التطبيق</h2>
+    <p>إذا كان التطبيق مثبتًا على هاتفك، اضغط الزر التالي لفتحه.</p>
+
+    <a class="btn" id="openBtn" href="#">فتح التطبيق</a>
+  </div>
+
+  <script>
+    const PACKAGE_NAME = "com.my.newproject40";
+
+    // هذا Intent يفتح التطبيق المثبّت مباشرة بالباكج نيم
+    const INTENT_URL = "intent://open#Intent;scheme=dalil;package=" + PACKAGE_NAME + ";end;";
+
+    document.getElementById("openBtn").setAttribute("href", INTENT_URL);
+
+    // محاولة فتح تلقائية (قد لا تعمل على بعض الأجهزة، لذلك الزر موجود)
+    window.location.href = INTENT_URL;
+  </script>
 </body>
 </html>
