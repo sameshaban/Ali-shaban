@@ -1,24 +1,357 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>فتح التطبيق</title>
-</head>
-<body style="font-family:Arial; direction:rtl; padding:20px;">
-  <h2>فتح التطبيق</h2>
-  <p>اضغط الزر لفتح التطبيق إذا كان مثبتًا.</p>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>دليل مأرب — صفحة تعليمية</title>
 
-  <a id="openBtn"
-     style="display:inline-block;padding:12px 16px;border:1px solid #000;border-radius:10px;text-decoration:none;"
-     href="#">
-    فتح التطبيق
-  </a>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a33;
+      --text:#f5f7ff;
+      --muted:#b9c2ff;
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 70% -10%, rgba(121, 97, 255, .25), transparent 60%),
+                  radial-gradient(900px 500px at 10% 0%, rgba(0, 214, 255, .18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+
+    a{color:inherit}
+    .wrap{max-width:980px; margin:0 auto; padding:22px}
+    .top{
+      display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+      padding:14px 0 6px;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.85));
+      box-shadow: var(--shadow);
+      display:grid; place-items:center;
+      font-weight:800;
+    }
+    .brand h1{margin:0; font-size:18px}
+    .brand p{margin:2px 0 0; color:var(--muted); font-size:12px}
+
+    .hero{
+      margin-top:10px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-inner{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      padding:22px;
+    }
+    @media (max-width:820px){
+      .hero-inner{grid-template-columns: 1fr}
+    }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(121,97,255,.18);
+      border:1px solid rgba(121,97,255,.30);
+      color: var(--text);
+      font-size:13px;
+      width: fit-content;
+    }
+
+    .hero h2{
+      margin:10px 0 8px;
+      font-size:30px;
+      line-height:1.25;
+    }
+    .hero .sub{
+      margin:0;
+      color: var(--muted);
+      font-size:15px;
+      line-height:1.85;
+    }
+
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:16px;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      padding:12px 14px;
+      border-radius:14px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      transition:.15s ease;
+      font-weight:600;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(121,97,255,.95), rgba(0,214,255,.85));
+      border: none;
+      color:#06101f;
+    }
+    .btn.primary:hover{filter:brightness(1.05)}
+
+    .panel{
+      background: rgba(0,0,0,.15);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .panel h3{margin:0 0 10px; font-size:16px}
+    .kv{
+      display:grid; gap:8px;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .kv b{color:var(--text)}
+    .hint{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.18);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width:900px){ .grid{grid-template-columns:1fr 1fr} }
+    @media (max-width:560px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+    }
+    .card h4{margin:0 0 6px; font-size:15px}
+    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.8}
+
+    .section{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+    }
+    @media (max-width:820px){ .section{grid-template-columns:1fr} }
+
+    .steps ol{
+      margin:0; padding:0 18px 0 0;
+      color: var(--muted);
+      line-height:1.9;
+      font-size:14px;
+    }
+    .steps li{margin:8px 0}
+    .steps b{color:var(--text)}
+    .faq details{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+      margin:10px 0;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight:700;
+      outline:none;
+    }
+    .faq p{
+      margin:8px 0 0;
+      color:var(--muted);
+      line-height:1.85;
+      font-size:13.5px;
+    }
+
+    footer{
+      margin:18px 0 10px;
+      color: rgba(255,255,255,.55);
+      font-size:12px;
+      text-align:center;
+    }
+
+    .small{
+      font-size:12px;
+      color: rgba(255,255,255,.65);
+      margin-top:8px;
+      line-height:1.7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="top">
+      <div class="brand">
+        <div class="logo">م</div>
+        <div>
+          <h1>دليل مأرب</h1>
+          <p>صفحة تعليمية لشرح التطبيق وفتح التطبيق من الرابط</p>
+        </div>
+      </div>
+
+      <div class="badge" id="statusBadge">جاهز للاستخدام عبر واتساب</div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="badge">📍 دليل الأماكن والخدمات في مأرب</div>
+          <h2>تعلّم استخدام تطبيق <span style="color:#9fe7ff">دليل مأرب</span> خطوة بخطوة</h2>
+          <p class="sub">
+            التطبيق يساعدك في الوصول إلى <b>الأماكن</b> والخدمات بسهولة: مطاعم، صيدليات، ورش، فنادق، مكاتب خدمات،
+            وأرقام مهمة — مع معلومات وتواصل سريع.
+          </p>
+
+          <div class="cta">
+            <a class="btn primary" id="openBtn" href="#">🚀 فتح التطبيق الآن</a>
+            <a class="btn" id="apkBtn" href="#" target="_blank">⬇️ تحميل التطبيق (APK)</a>
+            <a class="btn" href="#learn">📘 شرح الاستخدام</a>
+          </div>
+
+          <div class="small">
+            💡 إذا لم يُفتح التطبيق تلقائيًا، اضغط زر <b>فتح التطبيق الآن</b>.
+            بعض المتصفحات تمنع الفتح التلقائي لأسباب أمنية.
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>معلومات سريعة</h3>
+          <div class="kv" id="infoBox">
+            <div>✅ <b>الحالة:</b> صفحة تعمل عبر HTTPS ومناسبة لواتساب</div>
+            <div>📦 <b>اسم الحزمة:</b> <span id="pkgTxt">—</span></div>
+            <div>🔗 <b>رابط الصفحة:</b> <span id="pageTxt">—</span></div>
+            <div>🧩 <b>بيانات من الرابط:</b> <span id="paramTxt">لا يوجد</span></div>
+          </div>
+
+          <div class="hint">
+            مثال رابط مع بيانات:<br>
+            <b>?id=123&type=place</b><br>
+            (يفيد لاحقًا لو أردت فتح صفحة معيّنة داخل التطبيق)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h4>🔍 بحث سريع</h4>
+        <p>ابحث بالاسم أو النوع للوصول لأقرب خدمة أو مكان داخل مأرب.</p>
+      </div>
+      <div class="card">
+        <h4>📞 تواصل بضغطة</h4>
+        <p>اتصل أو تواصل مباشرة إذا كانت معلومات المكان متاحة في التطبيق.</p>
+      </div>
+      <div class="card">
+        <h4>🗺️ معلومات منظّمة</h4>
+        <p>تصنيفات واضحة تساعدك تجد ما تريد بسرعة بدون تعب.</p>
+      </div>
+    </div>
+
+    <div class="section" id="learn">
+      <div class="card steps">
+        <h4>📘 شرح الاستخدام (تعليمي)</h4>
+        <ol>
+          <li>افتح التطبيق ثم اختر <b>القسم</b> (مطاعم/صيدليات/ورش/فنادق…)</li>
+          <li>استخدم <b>البحث</b> للعثور على المكان المطلوب.</li>
+          <li>افتح بطاقة المكان لمشاهدة <b>التفاصيل</b> (العنوان، الوصف، الهاتف إن وجد).</li>
+          <li>إذا وجدت زر تواصل، اضغطه للاتصال أو المراسلة.</li>
+          <li>شارك التطبيق مع أصدقائك عبر واتساب لمساعدة الآخرين.</li>
+        </ol>
+      </div>
+
+      <div class="card faq">
+        <h4>❓ أسئلة شائعة</h4>
+
+        <details>
+          <summary>لماذا لا يفتح التطبيق تلقائيًا أحيانًا؟</summary>
+          <p>بعض المتصفحات تمنع الفتح التلقائي للتطبيق لأسباب أمنية، لذلك وضعنا زر “فتح التطبيق الآن”.</p>
+        </details>
+
+        <details>
+          <summary>هل يحتاج التطبيق إلى متجر Google Play؟</summary>
+          <p>لا. يمكن تحميل التطبيق عبر ملف APK من زر التحميل إذا وفّرت رابطًا مباشرًا للملف.</p>
+        </details>
+
+        <details>
+          <summary>هل يمكن فتح صفحة معيّنة داخل التطبيق من الرابط؟</summary>
+          <p>نعم، لكن يحتاج أن تضيف داخل التطبيق كود لاستقبال <b>id</b> و <b>type</b> من الرابط. إذا أردت ذلك قلّي وسأعطيك كود Sketchware/Java.</p>
+        </details>
+      </div>
+    </div>
+
+    <footer>
+      © دليل مأرب — صفحة تعريف وتعليم — GitHub Pages
+    </footer>
+  </div>
 
   <script>
+    // ====== عدّل هنا فقط ======
     const PACKAGE_NAME = "com.my.newproject40";
-    const INTENT_URL = "intent://open#Intent;scheme=dalil;package=" + PACKAGE_NAME + ";end;";
-    document.getElementById("openBtn").href = INTENT_URL;
+
+    // ضع رابط APK مباشر (اختياري). إذا لا يوجد، اتركه فارغًا وسيُخفى زر التحميل.
+    const APK_URL = ""; // مثال: "https://example.com/dalil-marib.apk"
+    // ==========================
+
+    // باراميترات اختيارية من الرابط
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id") || "";
+    const type = params.get("type") || "";
+
+    // تحديث معلومات اللوحة
+    document.getElementById("pkgTxt").textContent = PACKAGE_NAME;
+    document.getElementById("pageTxt").textContent = window.location.href;
+
+    if (id || type) {
+      document.getElementById("paramTxt").textContent =
+        (id ? ("id=" + id) : "") + (id && type ? " | " : "") + (type ? ("type=" + type) : "");
+    }
+
+    // Intent لفتح التطبيق المثبّت بالباكج نيم
+    const deepPath = "open" + (id ? ("?id=" + encodeURIComponent(id) + (type ? ("&type=" + encodeURIComponent(type)) : "")) : "");
+    const INTENT_URL = "intent://" + deepPath + "#Intent;scheme=dalil;package=" + PACKAGE_NAME + ";end;";
+
+    // زر فتح التطبيق
+    const openBtn = document.getElementById("openBtn");
+    openBtn.href = INTENT_URL;
+
+    // زر APK (إخفاء إن لم يوجد)
+    const apkBtn = document.getElementById("apkBtn");
+    if (APK_URL && APK_URL.trim().length > 0) {
+      apkBtn.href = APK_URL;
+    } else {
+      apkBtn.style.display = "none";
+    }
+
+    // محاولة فتح تلقائية (قد تُمنع على بعض الأجهزة)
+    try { window.location.href = INTENT_URL; } catch (e) {}
   </script>
 </body>
 </html>
