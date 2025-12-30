@@ -1,35 +1,24 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>فتح التطبيق</title>
-  <style>
-    body { font-family: Arial, sans-serif; direction: rtl; margin: 24px; }
-    .box { max-width: 520px; margin: 0 auto; padding: 18px; border: 1px solid #ddd; border-radius: 12px; }
-    h2 { margin: 0 0 12px; }
-    p { line-height: 1.7; }
-    a.btn { display:inline-block; margin:8px 6px 0 0; padding:10px 14px; border-radius:10px; text-decoration:none; border:1px solid #000; }
-  </style>
 </head>
-<body>
-  <div class="box">
-    <h2>فتح التطبيق</h2>
-    <p>إذا كان التطبيق مثبتًا على هاتفك، اضغط الزر التالي لفتحه.</p>
+<body style="font-family:Arial; direction:rtl; padding:20px;">
+  <h2>فتح التطبيق</h2>
+  <p>اضغط الزر لفتح التطبيق إذا كان مثبتًا.</p>
 
-    <a class="btn" id="openBtn" href="#">فتح التطبيق</a>
-  </div>
+  <a id="openBtn"
+     style="display:inline-block;padding:12px 16px;border:1px solid #000;border-radius:10px;text-decoration:none;"
+     href="#">
+    فتح التطبيق
+  </a>
 
   <script>
     const PACKAGE_NAME = "com.my.newproject40";
-
-    // هذا Intent يفتح التطبيق المثبّت مباشرة بالباكج نيم
     const INTENT_URL = "intent://open#Intent;scheme=dalil;package=" + PACKAGE_NAME + ";end;";
-
-    document.getElementById("openBtn").setAttribute("href", INTENT_URL);
-
-    // محاولة فتح تلقائية (قد لا تعمل على بعض الأجهزة، لذلك الزر موجود)
-    window.location.href = INTENT_URL;
+    document.getElementById("openBtn").href = INTENT_URL;
   </script>
 </body>
 </html>
