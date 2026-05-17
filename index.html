@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جاري فتح تطبيق دليل مأرب...</title>
+    <title>دليل مأرب - تفاصيل الإعلان</title>
     
     <style>
         body {
@@ -13,66 +13,87 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #002547;
+            background-color: #002547; /* كحلي دليل مأرب */
             font-family: sans-serif;
             color: #ffffff;
             text-align: center;
         }
-        .container {
-            padding: 20px;
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 30px 20px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 340px;
+            width: 90%;
         }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #EDC737;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px auto;
+        .logo-placeholder {
+            font-size: 48px;
+            margin-bottom: 15px;
         }
         h2 {
-            margin: 0 0 10px 0;
-            font-size: 22px;
+            margin: 0 0 8px 0;
+            font-size: 20px;
+            color: #ffffff;
         }
         p {
-            color: #A0A0A0;
-            margin: 0;
+            color: #B0B8C0;
+            margin: 0 0 25px 0;
             font-size: 14px;
+            line-height: 1.5;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .btn {
+            display: block;
+            background-color: #EDC737; /* ذهبي دليل مأرب */
+            color: #002547;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 12px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(237, 199, 55, 0.2);
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #EDC737;
+            border: 1px solid #EDC737;
+            box-shadow: none;
         }
     </style>
-
-    <script>
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const postId = urlParams.get('id');
-            
-            if (postId) {
-                // محاولة فتح التطبيق مباشرة
-                window.location.href = "mareb://post?id=" + postId;
-                
-                // خطة بديلة مؤقتة: التوجيه لرابط تحميل مباشر بدلاً من متجر جوجل بلاي لحين نشر التطبيق
-                setTimeout(function() {
-                    // ضع هنا رابطاً مؤقتاً (مثل رابط جوجل درايف يحتوي على الـ APK أو أي رابط بديل تفضله)
-                    window.location.href = "https://drive.google.com/drive/folders/your_folder_link";
-                }, 2000);
-            } else {
-                // التوجيه للرابط البديل في حال عدم وجود معرف منشور
-                window.location.href = "https://drive.google.com/drive/folders/your_folder_link";
-            }
-        }
-    </script>
 </head>
 <body>
 
-    <div class="container">
-        <div class="loader"></div>
-        <h2>جاري الانتقال إلى تطبيق دليل مأرب...</h2>
-        <p>إذا لم يفتح التطبيق تلقائياً، يمكنك تحميل أحدث إصدار من الرابط البديل.</p>
+    <div class="card">
+        <div class="logo-placeholder">📍</div>
+        <h2>دليل مأرب الإلكتروني</h2>
+        <p>اضغط على الزر أدناه لفتح تفاصيل الإعلان مباشرة داخل التطبيق المثبت على هاتفك.</p>
+        
+        <a href="#" id="openAppBtn" class="btn">فتح في التطبيق</a>
+        
+        <a href="https://t.me/your_telegram_channel_or_link" id="downloadAppBtn" class="btn btn-secondary">تحميل التطبيق (APK)</a>
     </div>
+
+    <script>
+        // استخراج الـ ID من الرابط القادم من الواتساب
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        
+        if (postId) {
+            // ربط زر فتح التطبيق بالرابط العميق المخصص ليتجاوز حماية كرووم بنجاح بنقرة مستخدم
+            document.getElementById('openAppBtn').href = "mareb://post?id=" + postId;
+            
+            // محاولة أولية سريعة لفتح التطبيق تلقائياً (قد تنجح في بعض المتصفحات)
+            window.location.href = "mareb://post?id=" + postId;
+        } else {
+            // إذا لم يكن هناك ID، نقوم بتوجيه زري الصفحة لصفحة التحميل أو الرئيسية
+            document.getElementById('openAppBtn').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
