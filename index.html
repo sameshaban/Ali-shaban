@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #002547; /* اللون الكحلي لهوية التطبيق */
+            background-color: #002547;
             font-family: sans-serif;
             color: #ffffff;
             text-align: center;
@@ -23,7 +23,7 @@
         }
         .loader {
             border: 4px solid #f3f3f3;
-            border-top: 4px solid #EDC737; /* اللون الذهبي للهوية */
+            border-top: 4px solid #EDC737;
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -47,22 +47,21 @@
 
     <script>
         window.onload = function() {
-            // استخراج معرف المنشور (id) من الرابط القادم من الواتساب
             const urlParams = new URLSearchParams(window.location.search);
             const postId = urlParams.get('id');
             
             if (postId) {
-                // محاولة توجيه الهاتف لفتح التطبيق مباشرة عبر الرابط العميق المخصص
+                // محاولة فتح التطبيق مباشرة
                 window.location.href = "mareb://post?id=" + postId;
                 
-                // خطة بديلة (Fallback): إذا لم يفتح التطبيق خلال ثانيتين (بسبب عدم تثبيته مثلاً)
-                // سيتم تحويل المستخدم تلقائياً إلى صفحة التطبيق على متجر جوجل بلاي
+                // خطة بديلة مؤقتة: التوجيه لرابط تحميل مباشر بدلاً من متجر جوجل بلاي لحين نشر التطبيق
                 setTimeout(function() {
-                    window.location.href = "https://play.google.com/store/apps/details?id=com.shaban.dalil";
+                    // ضع هنا رابطاً مؤقتاً (مثل رابط جوجل درايف يحتوي على الـ APK أو أي رابط بديل تفضله)
+                    window.location.href = "https://drive.google.com/drive/folders/your_folder_link";
                 }, 2000);
             } else {
-                // إذا دخل المستخدم للرابط الأساسي بدون رقم منشور، يتم تحويله للمتجر مباشرة
-                window.location.href = "https://play.google.com/store/apps/details?id=com.shaban.dalil";
+                // التوجيه للرابط البديل في حال عدم وجود معرف منشور
+                window.location.href = "https://drive.google.com/drive/folders/your_folder_link";
             }
         }
     </script>
@@ -72,7 +71,7 @@
     <div class="container">
         <div class="loader"></div>
         <h2>جاري الانتقال إلى تطبيق دليل مأرب...</h2>
-        <p>إذا لم يفتح التطبيق تلقائياً، تأكد من تثبيته من متجر جوجل بلاي.</p>
+        <p>إذا لم يفتح التطبيق تلقائياً، يمكنك تحميل أحدث إصدار من الرابط البديل.</p>
     </div>
 
 </body>
