@@ -69,7 +69,7 @@
 <body>
 
     <div class="card">
-        <div class="logo-placeholder">📍</div>
+        <div class="logo-placeholder">📌</div>
         <h2>دليل مأرب الإلكتروني</h2>
         <p>اضغط على الزر أدناه لفتح تفاصيل الإعلان مباشرة داخل التطبيق المثبت على هاتفك.</p>
         
@@ -79,18 +79,19 @@
     </div>
 
     <script>
-        // استخراج الـ ID من الرابط القادم من الواتساب
         const urlParams = new URLSearchParams(window.location.search);
         const postId = urlParams.get('id');
         
         if (postId) {
-            // ربط زر فتح التطبيق بالرابط العميق المخصص ليتجاوز حماية كرووم بنجاح بنقرة مستخدم
-            document.getElementById('openAppBtn').href = "mareb://post?id=" + postId;
+            // الطريقة الرسمية والمعيارية لمتصفح Chrome لإيقاظ التطبيقات برمجياً في الأندرويد
+            const intentUrl = "intent://post?id=" + postId + "#Intent;scheme=mareb;package=com.shaban.dalil;end";
             
-            // محاولة أولية سريعة لفتح التطبيق تلقائياً (قد تنجح في بعض المتصفحات)
-            window.location.href = "mareb://post?id=" + postId;
+            // ربط الزر بالـ Intent الجديد القادر على تخطي فلاتر المتصفح
+            document.getElementById('openAppBtn').href = intentUrl;
+            
+            // محاولة الفتح التلقائي الفوري فور تحميل الصفحة
+            window.location.href = intentUrl;
         } else {
-            // إذا لم يكن هناك ID، نقوم بتوجيه زري الصفحة لصفحة التحميل أو الرئيسية
             document.getElementById('openAppBtn').style.display = 'none';
         }
     </script>
